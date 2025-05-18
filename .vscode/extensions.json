@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "unifiedjs.vscode-mdx",
+    "xyc.vscode-mdx-preview"
+  ]
+}
