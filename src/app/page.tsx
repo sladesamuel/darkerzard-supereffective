@@ -1,3 +1,4 @@
+import QuizRound from "@/components/game/QuizRound"
 import { Container, Image, Stack } from "@chakra-ui/react"
 
 const Home = () => (
@@ -11,6 +12,8 @@ const Home = () => (
         maxHeight={300}
         aspectRatio={1024 / 700}
       />
+
+      <QuizRound />
     </Stack>
   </Container>
 )
