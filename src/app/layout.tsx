@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter, Space_Grotesk, Roboto_Mono } from "next/font/google"
+import { Provider } from "@/components/ui/provider"
 import "./globals.css"
 
 export const inter = Inter({
@@ -47,11 +48,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${grotesk.variable} ${mono.variable} antialiased`}
       >
-        {children}
+        <Provider>
+          {children}
+        </Provider>
       </body>
     </html>
   )
