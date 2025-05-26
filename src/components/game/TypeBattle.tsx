@@ -1,15 +1,21 @@
 import { Heading, HStack } from "@chakra-ui/react"
 import SingleType from "./SingleType"
+import PokemonType from "@/types/PokemonType"
 
-const TypeBattle = () => (
+type Props = {
+  playerType: PokemonType
+  opponentType: PokemonType
+}
+
+const TypeBattle = ({ playerType, opponentType }: Props) => (
   <HStack align="center" justifyContent="center">
-    <SingleType type="fire" />
+    <SingleType type={playerType} />
 
     <Heading>
       vs
     </Heading>
 
-    <SingleType type="water" />
+    <SingleType type={opponentType} />
   </HStack>
 )
 
