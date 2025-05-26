@@ -1,5 +1,5 @@
 import { memo } from "react"
-import { Center, VStack, Popover, Portal, Text } from "@chakra-ui/react"
+import { Center, VStack, Popover, Portal, Text, Button } from "@chakra-ui/react"
 import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 import GameRound from "@/types/GameRound"
 import TypeImage from "./TypeImage"
@@ -24,11 +24,6 @@ const ResultPopover = ({ show, round, answer, isCorrect, onClose }: Props) => (
   <Popover.Root
     open={show}
     modal={true}
-    onOpenChange={({ open }) => {
-      if (!open) {
-        onClose()
-      }
-    }}
     size="lg"
   >
     <Popover.Trigger asChild>
@@ -45,14 +40,27 @@ const ResultPopover = ({ show, round, answer, isCorrect, onClose }: Props) => (
               </Center>
             </Popover.Title>
 
-            <VStack justifyContent="center" my="4">
+            <VStack justifyContent="center" my={4}>
               <TypeImage type={round.playerType} />
 
-              <Text my="4">
+              <Text>
                 is <b>{answer?.label}</b> against
               </Text>
 
               <TypeImage type={round.opponentType} />
+
+              <Button
+                colorPalette="blue"
+                marginTop={8}
+                width="100%"
+                fontWeight="bold"
+                onClick={e => {
+                  e.preventDefault()
+                  onClose()
+                }}
+              >
+                Next Round &gt;
+              </Button>
             </VStack>
           </Popover.Body>
         </Popover.Content>

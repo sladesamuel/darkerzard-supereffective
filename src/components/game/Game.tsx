@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import GameRound from "@/types/GameRound"
 import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 import QuizRound from "./QuizRound"
@@ -22,14 +22,15 @@ const isCorrectAnswer = (round: GameRound, answer: EffectivenessAnswer): boolean
 }
 
 const Game = () => {
+  const [gameRound, setGameRound] = useState<GameRound | undefined>()
   const [result, setResult] = useState<{
     correct: boolean
     answer: EffectivenessAnswer
   } | undefined>()
 
-  const gameRound = getNextRound()
-
   const handleAnswerSelected = (answer: EffectivenessAnswer) => {
+    if (!gameRound) return
+
     const correct = isCorrectAnswer(gameRound, answer)
 
     setResult({
@@ -38,17 +39,32 @@ const Game = () => {
     })
   }
 
+  const playNextRound = () => {
+    setResult(undefined)
+    setGameRound(getNextRound())
+  }
+
+  useEffect(() => playNextRound(), [])
+
+  // TODO: Show skeleton when game round is undefined.
   return (
     <>
-      <QuizRound {...gameRound} onAnswerSelected={handleAnswerSelected} />
+      {gameRound && (
+        <>
+          <QuizRound
+            {...gameRound}
+            onAnswerSelected={handleAnswerSelected}
+          />
 
-      <ResultPopover
-        show={!!result}
-        isCorrect={result?.correct}
-        answer={result?.answer}
-        round={gameRound}
-        onClose={() => setResult(undefined)}
-      />
+          <ResultPopover
+            show={!!result}
+            isCorrect={result?.correct}
+            answer={result?.answer}
+            round={gameRound}
+            onClose={playNextRound}
+          />
+        </>
+      )}
     </>
   )
 }

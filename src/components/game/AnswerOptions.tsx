@@ -28,7 +28,6 @@ const AnswerOptions = ({ onAnswerSelected }: Props) => {
   return (
     <RadioCard.Root
       onValueChange={({ value }) => handleValueChange(value)}
-      defaultValue={null}
       size="lg"
       colorScheme="blue"
       variant="outline"
