@@ -2,21 +2,23 @@ import { Heading, Stack } from "@chakra-ui/react"
 import TypeBattle from "./TypeBattle"
 import AnswerOptions from "./AnswerOptions"
 import PokemonType from "@/types/PokemonType"
+import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 
 type Props = {
   playerType: PokemonType
   opponentType: PokemonType
+  onAnswerSelected: (answer: EffectivenessAnswer) => void
 }
 
-const QuizRound = ({ playerType, opponentType }: Props) => (
+const QuizRound = ({ onAnswerSelected, ...types }: Props) => (
   <Stack>
-    <TypeBattle playerType={playerType} opponentType={opponentType} />
+    <TypeBattle {...types} />
 
     <Heading textAlign="center" marginTop={8}>
       What's the effectiveness?
     </Heading>
 
-    <AnswerOptions />
+    <AnswerOptions onAnswerSelected={onAnswerSelected} />
   </Stack>
 )
 
