@@ -54,17 +54,6 @@ const AnswerOptions = ({ selectedAnswer, onAnswerSelected }: Props) => {
           </RadioCard.Item>
         ))}
       </VStack>
-
-      <Button
-        colorPalette="blue"
-        variant="ghost"
-        onClick={e => {
-          e.preventDefault()
-          setValue(null)
-        }}
-      >
-        Reset
-      </Button>
     </RadioCard.Root>
   )
 }

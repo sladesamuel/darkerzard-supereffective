@@ -3,17 +3,19 @@
 import { useEffect, useState } from "react"
 import GameRound from "@/types/GameRound"
 import EffectivenessAnswer from "@/types/EffectivenessAnswer"
+import PokemonType, { pokemonTypes } from "@/types/PokemonType"
 import QuizRound from "./QuizRound"
 import ResultPopover from "./ResultPopover"
 
-const getNextRound = (): GameRound => {
-  // TODO: This function should return the next game round.
-  //       For now, we will return a hardcoded example.
-  return {
-    playerType: "fire",
-    opponentType: "water"
-  }
+const getRandomType = (): PokemonType => {
+  const randomIndex = Math.floor(Math.random() * pokemonTypes.length)
+  return pokemonTypes[randomIndex]
 }
+
+const getNextRound = (): GameRound => ({
+  playerType: getRandomType(),
+  opponentType: getRandomType()
+})
 
 const isCorrectAnswer = (round: GameRound, answer: EffectivenessAnswer): boolean => {
   // TODO: This function should determine if the answer is correct based on the game round.
