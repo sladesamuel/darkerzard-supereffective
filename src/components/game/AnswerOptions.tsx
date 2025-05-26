@@ -4,7 +4,7 @@ import { Center, RadioCard, VStack } from "@chakra-ui/react"
 import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 
 const options: EffectivenessAnswer[] = [
-  { value: "0", label: "Immune (x0)" },
+  { value: "0", label: "Ineffective (x0)" },
   { value: "0.25", label: "Not Very Effective (x0.25)" },
   { value: "0.5", label: "Resisted (x0.5)" },
   { value: "1", label: "Effective (x1)" },

@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import GameRound from "@/types/GameRound"
 import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 import QuizRound from "./QuizRound"
+import ResultPopover from "./ResultPopover"
 
 const getNextRound = (): GameRound => {
   // TODO: This function should return the next game round.
@@ -20,20 +22,34 @@ const isCorrectAnswer = (round: GameRound, answer: EffectivenessAnswer): boolean
 }
 
 const Game = () => {
+  const [result, setResult] = useState<{
+    correct: boolean
+    answer: EffectivenessAnswer
+  } | undefined>()
+
   const gameRound = getNextRound()
 
   const handleAnswerSelected = (answer: EffectivenessAnswer) => {
-    if (isCorrectAnswer(gameRound, answer)) {
-      // TODO: Show popup.
-      console.log("Correct answer selected:", answer)
-    } else {
-      console.log("Incorrect answer selected:", answer)
-    }
+    const correct = isCorrectAnswer(gameRound, answer)
+
+    setResult({
+      correct,
+      answer
+    })
   }
 
-
   return (
-    <QuizRound {...gameRound} onAnswerSelected={handleAnswerSelected} />
+    <>
+      <QuizRound {...gameRound} onAnswerSelected={handleAnswerSelected} />
+
+      <ResultPopover
+        show={!!result}
+        isCorrect={result?.correct}
+        answer={result?.answer}
+        round={gameRound}
+        onClose={() => setResult(undefined)}
+      />
+    </>
   )
 }
 
