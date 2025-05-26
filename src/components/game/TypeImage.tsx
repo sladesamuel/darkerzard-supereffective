@@ -1,6 +1,6 @@
 import { memo } from "react"
 import Image, { StaticImageData } from "next/image"
-import PokemonType from "@/types/PokemonType"
+import type PokemonType from "@/types/PokemonType"
 import normal from "@/images/normal.png"
 import fire from "@/images/fire.png"
 import water from "@/images/water.png"

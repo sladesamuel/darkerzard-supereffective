@@ -1,4 +1,4 @@
-import PokemonType from "@/types/PokemonType"
+import type PokemonType from "@/types/PokemonType"
 import TypeImage from "./TypeImage"
 
 type Props = {

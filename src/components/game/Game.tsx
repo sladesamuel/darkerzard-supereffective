@@ -1,27 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import GameRound from "@/types/GameRound"
-import EffectivenessAnswer from "@/types/EffectivenessAnswer"
-import PokemonType, { pokemonTypes } from "@/types/PokemonType"
+import getNextRound from "@/lib/getNextRound"
+import isCorrectAnswer from "@/lib/isCorrectAnswer"
+import type GameRound from "@/types/GameRound"
+import type EffectivenessAnswer from "@/types/EffectivenessAnswer"
 import QuizRound from "./QuizRound"
 import ResultPopover from "./ResultPopover"
-
-const getRandomType = (): PokemonType => {
-  const randomIndex = Math.floor(Math.random() * pokemonTypes.length)
-  return pokemonTypes[randomIndex]
-}
-
-const getNextRound = (): GameRound => ({
-  playerType: getRandomType(),
-  opponentType: getRandomType()
-})
-
-const isCorrectAnswer = (round: GameRound, answer: EffectivenessAnswer): boolean => {
-  // TODO: This function should determine if the answer is correct based on the game round.
-  //       For now, we will return true for a hardcoded example.
-  return answer.value === "0.5"
-}
 
 const Game = () => {
   const [gameRound, setGameRound] = useState<GameRound | undefined>()

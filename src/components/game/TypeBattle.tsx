@@ -1,6 +1,6 @@
 import { Heading, HStack } from "@chakra-ui/react"
+import type PokemonType from "@/types/PokemonType"
 import SingleType from "./SingleType"
-import PokemonType from "@/types/PokemonType"
 
 type Props = {
   playerType: PokemonType

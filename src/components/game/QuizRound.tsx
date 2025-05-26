@@ -1,8 +1,8 @@
 import { Heading, Stack } from "@chakra-ui/react"
+import type PokemonType from "@/types/PokemonType"
+import type EffectivenessAnswer from "@/types/EffectivenessAnswer"
 import TypeBattle from "./TypeBattle"
 import AnswerOptions from "./AnswerOptions"
-import PokemonType from "@/types/PokemonType"
-import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 
 type Props = {
   playerType: PokemonType

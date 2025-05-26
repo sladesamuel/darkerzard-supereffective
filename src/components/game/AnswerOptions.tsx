@@ -1,8 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Button, Center, RadioCard, VStack } from "@chakra-ui/react"
-import EffectivenessAnswer from "@/types/EffectivenessAnswer"
+import { Center, RadioCard, VStack } from "@chakra-ui/react"
+import type EffectivenessAnswer from "@/types/EffectivenessAnswer"
 
 const options: EffectivenessAnswer[] = [
   { value: "0", label: "Ineffective (x0)" },

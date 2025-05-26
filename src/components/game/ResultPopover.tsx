@@ -1,7 +1,7 @@
 import { memo } from "react"
 import { Center, VStack, Popover, Portal, Text, Button } from "@chakra-ui/react"
-import EffectivenessAnswer from "@/types/EffectivenessAnswer"
-import GameRound from "@/types/GameRound"
+import type EffectivenessAnswer from "@/types/EffectivenessAnswer"
+import type GameRound from "@/types/GameRound"
 import TypeImage from "./TypeImage"
 
 type Props = {
