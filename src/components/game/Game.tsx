@@ -53,6 +53,7 @@ const Game = () => {
         <>
           <QuizRound
             {...gameRound}
+            selectedAnswer={result?.answer?.value ?? null}
             onAnswerSelected={handleAnswerSelected}
           />
 

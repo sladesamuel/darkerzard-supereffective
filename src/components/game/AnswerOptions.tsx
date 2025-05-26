@@ -1,6 +1,7 @@
 "use client"
 
-import { Center, RadioCard, VStack } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
+import { Button, Center, RadioCard, VStack } from "@chakra-ui/react"
 import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 
 const options: EffectivenessAnswer[] = [
@@ -13,20 +14,27 @@ const options: EffectivenessAnswer[] = [
 ]
 
 type Props = {
+  selectedAnswer: string | null
   onAnswerSelected: (answer: EffectivenessAnswer) => void
 }
 
-const AnswerOptions = ({ onAnswerSelected }: Props) => {
+const AnswerOptions = ({ selectedAnswer, onAnswerSelected }: Props) => {
+  const [value, setValue] = useState<string | null>(selectedAnswer)
+
   const handleValueChange = (value: string | null) => {
     const selectedAnswer = options.find(option => option.value === value)
-
     if (selectedAnswer) {
       onAnswerSelected(selectedAnswer)
     }
   }
 
+  useEffect(() => {
+    setValue(selectedAnswer)
+  }, [selectedAnswer])
+
   return (
     <RadioCard.Root
+      value={value}
       onValueChange={({ value }) => handleValueChange(value)}
       size="lg"
       colorScheme="blue"
@@ -46,6 +54,17 @@ const AnswerOptions = ({ onAnswerSelected }: Props) => {
           </RadioCard.Item>
         ))}
       </VStack>
+
+      <Button
+        colorPalette="blue"
+        variant="ghost"
+        onClick={e => {
+          e.preventDefault()
+          setValue(null)
+        }}
+      >
+        Reset
+      </Button>
     </RadioCard.Root>
   )
 }

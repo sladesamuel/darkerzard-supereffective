@@ -7,10 +7,11 @@ import EffectivenessAnswer from "@/types/EffectivenessAnswer"
 type Props = {
   playerType: PokemonType
   opponentType: PokemonType
+  selectedAnswer: string | null
   onAnswerSelected: (answer: EffectivenessAnswer) => void
 }
 
-const QuizRound = ({ onAnswerSelected, ...types }: Props) => (
+const QuizRound = ({ selectedAnswer, onAnswerSelected, ...types }: Props) => (
   <Stack>
     <TypeBattle {...types} />
 
@@ -18,7 +19,7 @@ const QuizRound = ({ onAnswerSelected, ...types }: Props) => (
       What's the effectiveness?
     </Heading>
 
-    <AnswerOptions onAnswerSelected={onAnswerSelected} />
+    <AnswerOptions selectedAnswer={selectedAnswer} onAnswerSelected={onAnswerSelected} />
   </Stack>
 )
 
