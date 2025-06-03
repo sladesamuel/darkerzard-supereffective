@@ -16,7 +16,7 @@ const QuizRound = ({ selectedAnswer, onAnswerSelected, ...types }: Props) => (
     <TypeBattle {...types} />
 
     <Heading textAlign="center" marginTop={8}>
-      What's the effectiveness?
+      What&apos;s the effectiveness?
     </Heading>
 
     <AnswerOptions selectedAnswer={selectedAnswer} onAnswerSelected={onAnswerSelected} />

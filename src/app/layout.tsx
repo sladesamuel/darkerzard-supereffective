@@ -3,19 +3,19 @@ import { Inter, Space_Grotesk, Roboto_Mono } from "next/font/google"
 import { Provider } from "@/components/ui/provider"
 import "./globals.css"
 
-export const inter = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-export const grotesk = Space_Grotesk({
+const grotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-grotesk",
   display: "swap",
 });
 
-export const mono = Roboto_Mono({
+const mono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
