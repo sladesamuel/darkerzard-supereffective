@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 import getNextRound from "@/lib/getNextRound"
-import isCorrectAnswer from "@/lib/isCorrectAnswer"
+import getCorrectAnswer from "@/lib/getCorrectAnswer"
 import type GameRound from "@/types/GameRound"
-import type EffectivenessAnswer from "@/types/EffectivenessAnswer"
+import Effectiveness from "@/types/Effectiveness"
 import QuizRound from "./QuizRound"
 import ResultPopover from "./ResultPopover"
 
@@ -12,17 +12,18 @@ const Game = () => {
   const [gameRound, setGameRound] = useState<GameRound | undefined>()
   const [result, setResult] = useState<{
     correct: boolean
-    answer: EffectivenessAnswer
+    answer: Effectiveness
   } | undefined>()
 
-  const handleAnswerSelected = (answer: EffectivenessAnswer) => {
+  const handleAnswerSelected = (answer: Effectiveness) => {
     if (!gameRound) return
 
-    const correct = isCorrectAnswer(gameRound, answer)
+    const correctAnswer = getCorrectAnswer(gameRound)
+    const correct = answer === correctAnswer
 
     setResult({
       correct,
-      answer
+      answer: correctAnswer
     })
   }
 
@@ -40,7 +41,7 @@ const Game = () => {
         <>
           <QuizRound
             {...gameRound}
-            selectedAnswer={result?.answer?.value ?? null}
+            selectedAnswer={result?.answer ?? null}
             onAnswerSelected={handleAnswerSelected}
           />
 

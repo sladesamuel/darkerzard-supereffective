@@ -1,13 +1,13 @@
 import { memo } from "react"
 import { Center, VStack, Popover, Portal, Text, Button } from "@chakra-ui/react"
-import type EffectivenessAnswer from "@/types/EffectivenessAnswer"
+import Effectiveness from "@/types/Effectiveness"
 import type GameRound from "@/types/GameRound"
 import TypeImage from "./TypeImage"
 
 type Props = {
   show: boolean
   round: GameRound
-  answer?: EffectivenessAnswer
+  answer?: Effectiveness
   isCorrect?: boolean
   onClose: () => void
 }
@@ -44,7 +44,7 @@ const ResultPopover = ({ show, round, answer, isCorrect, onClose }: Props) => (
               <TypeImage type={round.playerType} />
 
               <Text>
-                is <b>{answer?.label}</b> against
+                is <b>{answer}</b> against
               </Text>
 
               <TypeImage type={round.opponentType} />

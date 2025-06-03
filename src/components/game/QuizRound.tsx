@@ -1,6 +1,6 @@
 import { Heading, Stack } from "@chakra-ui/react"
 import type PokemonType from "@/types/PokemonType"
-import type EffectivenessAnswer from "@/types/EffectivenessAnswer"
+import Effectiveness from "@/types/Effectiveness"
 import TypeBattle from "./TypeBattle"
 import AnswerOptions from "./AnswerOptions"
 
@@ -8,7 +8,7 @@ type Props = {
   playerType: PokemonType
   opponentType: PokemonType
   selectedAnswer: string | null
-  onAnswerSelected: (answer: EffectivenessAnswer) => void
+  onAnswerSelected: (answer: Effectiveness) => void
 }
 
 const QuizRound = ({ selectedAnswer, onAnswerSelected, ...types }: Props) => (
