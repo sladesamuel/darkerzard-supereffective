@@ -39,6 +39,9 @@ export const metadata: Metadata = {
         alt: "Super Effective Pokémon Quiz App",
       }
     ]
+  },
+  other: {
+    "google-adsense-account": "ca-pub-4516740889075256"
   }
 }
 
@@ -49,6 +52,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4516740889075256"
+          crossOrigin="anonymous"
+          async
+        ></script>
+      </head>
       <body
         className={`${inter.variable} ${grotesk.variable} ${mono.variable} antialiased`}
       >
